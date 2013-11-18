@@ -2,8 +2,8 @@ class Api::HistoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show
-    results = History.where({created_at: 15.days.ago..Time.now}, state: 3).all
-    respond_to {|format| format.json { render :json => create_json(results) } }
+    @results = History.where({created_at: 15.days.ago..Time.now}, state: 3).all
+#    respond_to :json => create_json(results)
   end
 
   private
