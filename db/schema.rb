@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118103709) do
+ActiveRecord::Schema.define(version: 20131118171927) do
 
   create_table "histories", force: true do |t|
-    t.string   "video_id"
-    t.string   "title"
-    t.integer  "state"
+    t.string   "video_id",   null: false
+    t.string   "title",      null: false
+    t.integer  "state",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "histories", ["created_at", "state"], name: "index_histories_on_created_at_and_state", using: :btree
+  add_index "histories", ["video_id"], name: "index_histories_on_video_id", unique: true, using: :btree
 
 end
