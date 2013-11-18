@@ -1,6 +1,6 @@
-class CreateMenus < ActiveRecord::Migration
+class CreateHistories < ActiveRecord::Migration
   def change
-    create_table :menus do |t|
+    create_table :histories do |t|
       t.string :video_id
       t.string :title
       t.integer :state
