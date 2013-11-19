@@ -5,5 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-History.create(video_id: "sm123", title: "miku", state: 3)
-History.create(video_id: "sm456", title: "GUMI", state: 3)
+History.create(video_id: "sm789", title: "mikumiku", state: 3)
+History.create(video_id: "sm012", title: "GUMIgumi", state: 3)
