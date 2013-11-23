@@ -1,5 +1,11 @@
 class HistoriesController < ApplicationController
+  before_filter :set_page
   def show
-    @results = History.where({:created_at => 15.days.ago..Time.now, :state => 3})
+    @results = History.order(:created_at).page params[:page]
+  end
+
+  private
+  def set_page
+    params[:page] ||= 0
   end
 end

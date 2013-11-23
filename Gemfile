@@ -17,8 +17,11 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'json_spec'
+  gem 'kaminari-rspec'
 end
 
 gem 'jquery-rails'
 gem 'execjs'
 gem 'jbuilder', '~> 1.2'
+gem 'kaminari'
