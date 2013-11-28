@@ -1,7 +1,8 @@
 class HistoriesController < ApplicationController
   before_filter :set_page
-  def show
-    @results = History.order(:created_at).page params[:page]
+
+  def index
+    @results = page_formatted params[:page]
   end
 
   private
