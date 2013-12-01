@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Histories" do
+describe HistoriesController do
   let(:env) do
     { "HTTP_ACCEPT" => "application/json" }
   end
@@ -9,7 +9,7 @@ describe "Histories" do
     context "within no page parameter" do
       before { FactoryGirl.create(:history) }
       it "get a record" do
-        get :index, {}, env
+        get '/histories'
         expect(response).to be 200
       end
     end

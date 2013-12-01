@@ -43,4 +43,5 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include KaminariRspec::TestHelpers, type: :controller
+  config.render_views = true
 end
