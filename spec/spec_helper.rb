@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'kaminari_rspec'
+require 'json_spec'
 require 'pp'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -43,5 +44,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include KaminariRspec::TestHelpers, type: :controller
+  config.include JsonSpec::Helpers
   config.render_views = true
 end
