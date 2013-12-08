@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'mysql2'
+gem 'pry-rails'
+gem 'pry-debugger'
 
 group :assets do
   gem 'sass-rails',   '~> 4.0.0'
@@ -19,6 +21,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'json_spec'
   gem 'kaminari-rspec'
+  gem 'json_spec'
 end
 
 gem 'jquery-rails'
