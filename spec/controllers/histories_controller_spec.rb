@@ -12,7 +12,7 @@ shared_context "request with valid history" do
 end
 
 describe HistoriesController do
-  let(:valid_history) { 30.times { FactoryGirl.create(:history) } }
+  let(:valid_history) { FactoryGirl.create_list(:history, 30) }
   describe "GET index" do
     context "with no parameter" do
       let(:request) { get :index, format: 'json' }

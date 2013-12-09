@@ -2,10 +2,11 @@ class History < ActiveRecord::Base
   paginates_per 20
   default_scope { order("id desc") }
   MEDIA_ROOT = "https://s3-ap-northeast-1.amazonaws.com/nicomedia/audio"
+  STATE_UPLOADED = 3
 
   class << self
     def page_formatted index
-      format(page(index))
+      format(where(state: STATE_UPLOADED).page(index))
     end
 
     def format history

@@ -4,20 +4,36 @@ describe History do
   let(:sample_date) { "2013-01-01 00:00:00" }
 
   describe "#page_formatted" do
-    subject { described_class.page_formatted(index).size }
+    subject { described_class.page_formatted(index) }
 
-    context "with 30 record" do
-      before { FactoryGirl.create_list(:history, 30)}
+    context "with 30 valid record" do
+      before { FactoryGirl.create_list(:history, 30) }
 
       context "with page 1" do
         let(:index) { 1 }
-        it { expect(subject).to be 20 }
+        it { expect(subject.size).to be 20 }
       end
 
       context "with page 2" do
         let(:index) { 2 }
-        it { expect(subject).to be 10 }
+        it { expect(subject.size).to be 10 }
       end
+
+      context "with page 3" do
+        let(:index) { 3 }
+        it { expect(subject.size).to be 0 }
+      end
+    end
+
+    context "with invalid record" do
+      before { FactoryGirl.create(:history, state: 2) }
+      let(:index) { 1 }
+      it { expect(subject).to eq [] }
+    end
+
+    context "with no record" do
+      let(:index) { 1 }
+      it { expect(subject).to eq [] }
     end
   end
 
