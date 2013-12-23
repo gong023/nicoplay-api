@@ -11,29 +11,29 @@ describe History do
 
       context "with page 1" do
         let(:index) { 1 }
-        it { expect(subject.size).to be 20 }
+        it { expect(subject[:list].size).to be 20 }
       end
 
       context "with page 2" do
         let(:index) { 2 }
-        it { expect(subject.size).to be 10 }
+        it { expect(subject[:list].size).to be 10 }
       end
 
       context "with page 3" do
         let(:index) { 3 }
-        it { expect(subject.size).to be 0 }
+        it { expect(subject[:list].size).to be 0 }
       end
     end
 
     context "with invalid record" do
       before { FactoryGirl.create(:history, state: 2) }
       let(:index) { 1 }
-      it { expect(subject).to eq [] }
+      it { expect(subject).to eq({ list: [] }) }
     end
 
     context "with no record" do
       let(:index) { 1 }
-      it { expect(subject).to eq [] }
+      it { expect(subject).to eq({ list: [] }) }
     end
   end
 
@@ -43,18 +43,9 @@ describe History do
       before { described_class.stub(:create_path).and_return "dummy_path" }
       let(:history) { FactoryGirl.create_list(:history, 2) }
 
-      it "return array with title" do
-        subject.each_with_index do |h, i|
-          expect(h).to have_key(:title)
-          expect(h[:title]).to eq history[i][:title]
-        end
-      end
-
-      it "return array with path" do
-        subject.each_with_index do |h, i|
-          expect(h).to have_key(:path)
-        end
-      end
+      it { expect(subject).to have_key :list }
+      it { expect(subject[:list][0]).to have_key :title }
+      it { expect(subject[:list][0]).to have_key :path }
     end
   end
 

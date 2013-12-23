@@ -10,7 +10,9 @@ class History < ActiveRecord::Base
     end
 
     def format history
-      history.map { |h| {title: h.title, path: create_path(h)} }
+      {
+        list: history.map { |h| { title: h.title, path: create_path(h) } }
+      }
     end
 
     def create_path history
